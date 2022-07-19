@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: arial;
+  background: #FFFF;
+}
+
+#top_panel{
+  width: 100%;
+  height: 15vh;
+  background: #57A357;
+}
+
+h1{
+  display: block;
+  text-align: center;
+  padding: 1%;
+}
+
+.inf_user{
+  float: right;
+}
+
+.center_panel{
+  width: 90%;
+  height: 50vh;
+  margin: auto;
+  margin-top: 3%;
+  padding: 2%;
+  border-radius: 1em;
+  background: #57A357;
+}
+
+h2{
+  display: block;
+  text-align: center;
+}
+
+select{
+  width: 10%;
+}
+
+#form-body {
+  padding: 9% 2%;
+  border-radius: 1em;
+  width: 30%;
+  height: 65vh;
+  background: #57A357;
+  margin: auto;
+  margin-top: 8%;
+  box-shadow: 7px 13px 37px #000;
+}
+
+#titulo {
+  box-shadow: 3px 5px 10px #000;
+  border-radius: 1em;
+  position: absolute;
+  text-align: center;
+  background: #000E40;
+  width: 32%;
+  margin: 1% 34%;
+  padding: 2%;
+}
+
+button {
+  width: 10%;
+  margin: 0% 1%;
+  height: 5vh;
+  border-radius: 1em;
+  background: #163187;
+  border: none;
+  color: white;
+  box-shadow: 2px 2px 2px #000E40;
+}
+
+button:hover {
+  background: #5270D5;
+  box-shadow: 2px 2px 2px #1940C2;
+}
+
+button:active {
+  box-shadow: none;
+}
+
+.colores {
+  background: #112973; /*Azul oscuro*/
+  background: #35D046; /*Verde claro*/
+  background: #E6F4E7;
+}
