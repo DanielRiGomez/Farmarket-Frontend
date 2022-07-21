@@ -13,7 +13,7 @@ body {
   border-radius: 1em;
   width: 30%;
   height: 65vh;
-  background: #52734D;
+  background: #57A357;
   margin: auto;
   margin-top: 8%;
   box-shadow: 7px 13px 37px #000;
@@ -24,15 +24,16 @@ body {
   border-radius: 1em;
   position: absolute;
   text-align: center;
-  background: #FFEF82     ;
+  background: #000E40 ;
   width: 32%;
   margin: 1% 34%;
   padding: 2%;
+  color: #F7F7F7;
 }
 
 .controls {
   width: 100%;
-  border: 1px solid #A2D5AB;
+  border: 1px solid #000E40;
   margin-bottom: 15px;
   padding: 11px 10px;
   font-size: 14px;

@@ -21,6 +21,7 @@ body {
 }
 
 #titulo {
+  color: #F7F7F7;
   box-shadow: 3px 5px 10px #000;
   border-radius: 1em;
   position: absolute;

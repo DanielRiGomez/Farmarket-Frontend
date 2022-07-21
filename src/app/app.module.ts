@@ -7,6 +7,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { UserPerfilComponent } from './user-perfil/user-perfil.component';
+import {PetitionsService} from "./petitions.service";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -18,9 +20,14 @@ import { UserPerfilComponent } from './user-perfil/user-perfil.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [PetitionsService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor() {
+  }
+}

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {PetitionsService} from "../petitions.service";
 
 @Component({
   selector: 'app-register',
@@ -8,11 +9,20 @@ import {Router} from "@angular/router";
 })
 export class RegisterComponent implements OnInit {
 
+
   btnLogin(){
     this.router.navigateByUrl('/');
   }
 
-  constructor( private router: Router) { }
+  registerUser(){
+    this.petitions.createUser({
+      user: "User",
+      pass: "Password",
+      email: "email@email.co"
+    })
+  }
+
+  constructor( private router: Router, private petitions: PetitionsService) { }
 
   ngOnInit(): void {
   }
