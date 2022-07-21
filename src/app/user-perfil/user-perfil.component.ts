@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-user-perfil',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserPerfilComponent implements OnInit {
 
-  constructor() { }
+  btnInit(){
+    this.router.navigateByUrl('/inicio')
+  }
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
