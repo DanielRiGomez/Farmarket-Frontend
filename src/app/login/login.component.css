@@ -51,12 +51,12 @@ button {
   box-shadow: 2px 2px 2px #A2D5AB;
 }
 
-button:hover {
+button:enabled:hover {
   background: #5270D5;
   box-shadow: 2px 2px 2px #1940C2;
 }
 
-button:active {
+button:enabled:active {
   box-shadow: none;
 }
 
@@ -66,16 +66,14 @@ button:active {
   color: red;
 }
 
-.colores {
-  background: #112973; /*Azul oscuro*/
-  background: #35D046; /*Verde claro*/
-  background: #E6F4E7;
-}
-
 .oculto {
   visibility: hidden;
 }
 
 .visible {
   visibility: visible;
+}
+
+button:disabled {
+  background: #000000;
 }

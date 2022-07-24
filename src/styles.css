@@ -2,3 +2,12 @@
 body {
   background: #F7F7F7;
 }
+
+input.ng-dirty.ng-invalid,
+input.ng-touched.ng-invalid{
+  outline: 2px solid red;
+}
+
+button:disabled {
+  background: #000000;
+}

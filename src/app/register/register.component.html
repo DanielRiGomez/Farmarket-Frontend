@@ -1,17 +1,22 @@
 <body>
+
 <h1 id="titulo">Farmarket</h1>
+
 <section id="form-body">
   <section id="mensaje">Registro</section>
-  <form id="formulario">
-    <label for="username">Usuario:</label>
-    <input class="controls" type="text" name="nombre" id="nombUser" placeholder="Usuario">
-    <label for="password">Contraseña:</label>
-    <input class="controls" type="password" name="pass" placeholder="Contraseña">
-    <label for="email">Email:</label>
-    <input class="controls" type="email" name="email" placeholder="Email">
-    <button type="button" id="registar" (click)="registerUser()">Registrarse</button>
+
+  <form id="formulario" [formGroup]="registerForm" (ngSubmit)="registerUser()">
+    <label >Email:</label>
+    <input class="controls" type="email" placeholder="Email" formControlName="email">
+    <label >Nombre:</label>
+    <input class="controls" type="text" placeholder="Usuario" formControlName="name">
+    <label >Contraseña:</label>
+    <input class="controls" type="password" placeholder="Contraseña" formControlName="pass">
+
+    <button type="submit" id="registar" [disabled]="registerForm.invalid">Registrarse</button>
     <button type="button" id="Cancelar" (click)="btnLogin()">Cancelar</button>
   </form>
+
 </section>
 
 </body>

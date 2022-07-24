@@ -11,18 +11,18 @@ export class PetitionsService {
 
 
   getUser(): Observable<any>{
-    return this.http.get('');
+    return this.http.get('https://jsonplaceholder.typicode.com/todos/1');
   }
 
   validateUser(user: any): Observable<any>{
-    return this.http.post('', user);
+    return this.http.post('https://jsonplaceholder.typicode.com/users', user);
   }
 
-  createUser(user: any){
-    return this.http.post('http://localhost/Tests/PruebaRegister/validatePHP.php', user);
+  createUser(register: any): Observable<any>{
+    return this.http.post('https://jsonplaceholder.typicode.com/users', register);
   }
 
   alterUser(user: any): Observable<any>{
-    return this.http.put('', user);
+    return this.http.put('https://jsonplaceholder.typicode.com/users', user);
   }
 }

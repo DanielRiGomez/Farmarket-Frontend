@@ -52,12 +52,12 @@ button {
   box-shadow: 2px 2px 2px #000E40;
 }
 
-button:hover {
+button:enabled:hover {
   background: #5270D5;
   box-shadow: 2px 2px 2px #1940C2;
 }
 
-button:active {
+button:enabled:active {
   box-shadow: none;
 }
 
@@ -78,4 +78,8 @@ button:active {
 
 .visible {
   visibility: visible;
+}
+
+button:disabled {
+  background: #000000;
 }

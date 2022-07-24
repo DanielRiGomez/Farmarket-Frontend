@@ -1,29 +1,41 @@
 <body>
+
 <section id="top_panel">
   <h1>Farmarket</h1>
   <button type="button" id="meni_inicial" (click)="btnInit()">Menu Inicial</button>
   <button id="mis_productos">Mis Productos</button>
-  <label class="inf_user" for="username">Nombre de Usuario...</label>
+  <label class="inf_user" >Nombre de Usuario...</label>
 </section>
+
 <section id="perfil_panel">
+
   <h2>Perfil de Usuario</h2>
+
   <section class="user_form" id="left_form">
-    <label for="username">Usuario:</label>
-    <input class="controls" type="text" name="nombre" id="nombUser" placeholder="Nuevo Usuario">
-    <button class="butt_perfil" id="new_user">Cambiar Usuario</button>
-    <label for="email">Email:</label>
-    <input class="controls" type="password" name="pass" placeholder="Nuevo Email">
-    <button class="butt_perfil" id="new_email">Cambiar Email</button>
+    <form [formGroup]="alterNameForm" (ngSubmit)="alterName()">
+      <label >Nuevo Nombre:</label>
+      <input class="controls" type="text"  placeholder="Nuevo Usuario" formControlName="newName">
+      <button class="butt_perfil" id="new_user" [disabled]="alterNameForm.invalid">Cambiar Usuario</button>
+    </form>
+
+    <form [formGroup]="alterEmailForm" (ngSubmit)="alterEmail()">
+      <label >Nuevo Email:</label>
+      <input class="controls" type="password" placeholder="Nuevo Email" formControlName="newEmail">
+      <button class="butt_perfil" id="new_email" [disabled]="alterEmailForm.invalid">Cambiar Email</button>
+    </form>
   </section>
 
   <section class="user_form" id="right_form">
-    <label for="password">Contraseña Antigua:</label>
-    <input class="controls" type="password" name="pass" placeholder="Antigua Contraseña">
-    <label for="password">Contraseña Nueva:</label>
-    <input class="controls" type="password" name="pass" placeholder="Nueva Contraseña">
-    <label for="password">Repetir Contraseña:</label>
-    <input class="controls" type="password" name="pass" placeholder="Nueva Contraseña">
-    <button class="butt_perfil" id="new_pass">Cambiar Contraseña</button>
+    <form [formGroup]="alterPassForm" (ngSubmit)="alterPass()">
+      <label >Contraseña Antigua:</label>
+      <input class="controls" type="password" placeholder="Antigua Contraseña" formControlName="oldPass">
+      <label >Contraseña Nueva:</label>
+      <input class="controls" type="password" placeholder="Nueva Contraseña" formControlName="newPass">
+      <label >Repetir Contraseña:</label>
+      <input class="controls" type="password" placeholder="Nueva Contraseña" formControlName="newPass2">
+      <button class="butt_perfil" id="new_pass" [disabled]="alterPassForm.invalid">Cambiar Contraseña</button>
+    </form>
+
   </section>
 
 

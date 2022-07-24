@@ -1,13 +1,18 @@
 <body>
+
 <h1 id="titulo">Farmarket</h1>
+
 <section id="form-body">
+
   <section id="mensaje_error">No se reconoce este usuario</section>
-  <form id="formulario">
-    <label for="username">Usuario:</label>
-    <input class="controls" type="text" name="nombre" id="nombUser" placeholder="Usuario">
-    <label for="password">Contraseña:</label>
-    <input class="controls" type="password" name="pass" placeholder="Contraseña">
-    <button type="button" id="ingresar" (click)="btnInit()">Ingresar</button>
+
+  <form id="formulario" [formGroup]="loginForm" (ngSubmit)="btnLogin(loginForm)">
+    <label>Email:</label>
+    <input class="controls" type="email" placeholder="Email" formControlName="email">
+    <label>Contraseña:</label>
+    <input class="controls" type="password" placeholder="Contraseña" formControlName="pass">
+
+    <button type="submit" id="ingresar" [disabled]="loginForm.invalid">Ingresar</button>
     <button type="button" id="registar" (click)="btnRegister()">Registrarse</button>
   </form>
 
