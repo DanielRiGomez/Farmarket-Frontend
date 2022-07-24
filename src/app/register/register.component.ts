@@ -21,10 +21,8 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser(){
-    const register = {
-
-    }
-    this.petitions.createUser(register).subscribe(() => alert("registro enviado"));
+    this.petitions.createUser(this.registerForm.value.email, this.registerForm.value.pass,
+      this.registerForm.value.name).subscribe(() => alert("registro enviado"));
   }
 
   getTest(){

@@ -25,24 +25,19 @@ export class UserPerfilComponent implements OnInit {
   })
 
   alterName(){
-    const alter = {
-
-    }
-    this.petition.alterUser(alter);
+    let email = ""+ localStorage.getItem('UserEmail');
+    this.petition.alterUser(email, "name", this.alterNameForm.value.newName);
   }
 
   alterEmail(){
-    const alter = {
-
-    }
-    this.petition.alterUser(alter);
+    let email = ""+ localStorage.getItem('UserEmail');
+    this.petition.alterUser(email, "email", this.alterEmailForm.value.newName);
   }
 
   alterPass(){
-    const alter = {
-
-    }
-    this.petition.alterUser(alter);
+    let email = ""+ localStorage.getItem('UserEmail');
+    this.petition.alterPass(email, this.alterPassForm.value.newPass,
+      this.alterPassForm.value.oldPass);
   }
 
   btnInit(){

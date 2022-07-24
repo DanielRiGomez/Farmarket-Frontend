@@ -6,7 +6,7 @@
 
   <section id="mensaje_error">No se reconoce este usuario</section>
 
-  <form id="formulario" [formGroup]="loginForm" (ngSubmit)="btnLogin(loginForm)">
+  <form id="formulario" [formGroup]="loginForm" (ngSubmit)="btnLogin()">
     <label>Email:</label>
     <input class="controls" type="email" placeholder="Email" formControlName="email">
     <label>Contraseña:</label>

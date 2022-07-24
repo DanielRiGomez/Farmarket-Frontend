@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {PetitionsService} from "../petitions.service";
-import {FormControl, FormGroup, Validator, Validators} from "@angular/forms";
+import {Form, FormControl, FormGroup, Validator, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-login',
@@ -19,8 +19,9 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl('/registro');
   }
 
-  btnLogin(form: any){
-    this.petition.validateUser(form.values).subscribe(data => {
+  btnLogin(){
+
+    this.petition.validateUser(this.loginForm.value.email, this.loginForm.value.pass).subscribe(data => {
       if(data.token){
         sessionStorage.setItem("token", data.token);
         this.router.navigateByUrl('/inicio');
