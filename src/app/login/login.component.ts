@@ -10,6 +10,8 @@ import {Form, FormControl, FormGroup, Validator, Validators} from "@angular/form
 })
 export class LoginComponent implements OnInit {
 
+  errorMessage = "oculto";
+
   loginForm= new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     pass: new FormControl('', Validators.required)
@@ -21,11 +23,17 @@ export class LoginComponent implements OnInit {
 
   btnLogin(){
 
-    this.petition.validateUser(this.loginForm.value.email, this.loginForm.value.pass).subscribe(data => {
+    this.petition.validateUser(this.loginForm.value.email, this.loginForm.value.pass).subscribe((response: any) => {
+      alert(response.body);
+      /*
       if(data.token){
         sessionStorage.setItem("token", data.token);
         this.router.navigateByUrl('/inicio');
+      }else {
+        this.errorMessage="visible";
       }
+
+       */
     });
   }
 

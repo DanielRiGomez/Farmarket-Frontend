@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class RouterGuardGuard implements CanActivate {
+export class LogOutGuard implements CanActivate {
 
   constructor(private router: Router) {
   }
@@ -18,7 +18,8 @@ export class RouterGuardGuard implements CanActivate {
     if(!token){
       this.router.navigateByUrl('')
     }
-    return true
+
+    return true;
   }
 
 }
