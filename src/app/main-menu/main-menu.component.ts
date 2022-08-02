@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import { PetitionsService } from '../petitions.service';
 
 @Component({
   selector: 'app-main-menu',
@@ -13,8 +14,6 @@ export class MainMenuComponent implements OnInit {
   }
 
   constructor(private router: Router) { }
-
   ngOnInit(): void {
   }
-
 }

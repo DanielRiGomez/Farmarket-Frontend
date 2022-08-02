@@ -22,7 +22,9 @@ export class RegisterComponent implements OnInit {
 
   registerUser(){
     this.petitions.createUser(this.registerForm.value.email, this.registerForm.value.pass,
-      this.registerForm.value.name).subscribe(() => alert("registro enviado"));
+      this.registerForm.value.name).subscribe((data) => 
+        alert(data.message)
+      );
   }
 
   getTest(){

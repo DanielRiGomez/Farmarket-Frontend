@@ -9,6 +9,7 @@ export class PetitionsService {
 
   constructor(private http: HttpClient) { }
 
+  hostAdress = 'http://localhost:3000'
 
   getUser(): Observable<any>{
     return this.http.get('https://jsonplaceholder.typicode.com/todos/1');
@@ -17,27 +18,29 @@ export class PetitionsService {
   validateUser(emailUser: string, passUser: string): Observable<any>{
     let user = {
       email: emailUser,
-      pass: passUser
+      password: passUser
     }
-    return this.http.post('https://jsonplaceholder.typicode.com/users', user);
+    return this.http.post(`${this.hostAdress}/login`, user);
   }
 
   createUser(emailUser: string, passUser: string, nameUser: string): Observable<any>{
     let register = {
       email: emailUser,
-      pass: passUser,
+      password: passUser,
       name: nameUser
     }
-    return this.http.post('https://jsonplaceholder.typicode.com/users', register);
+    return this.http.post(`${this.hostAdress}/register`, register);
   }
 
-  alterUser(emailUser: string, feature: string, valueNew: string): Observable<any>{
+  alterUser(emailUser: string, valueNew: string): Observable<any>{
     let user = {
       email: emailUser,
-      feature: feature,
       valueNew: valueNew
     }
-    return this.http.put('https://jsonplaceholder.typicode.com/users', user);
+    return this.http.post(`${this.hostAdress}/updateuser`, user);
+  }
+  alterEmail(emailUser:string, valueNew:string){
+
   }
 
   alterPass(emailUser: string, passNew: string, passOld: string): Observable<any>{
@@ -47,7 +50,7 @@ export class PetitionsService {
       passNew: passNew
     }
 
-    return this.http.put('https://jsonplaceholder.typicode.com/users', user);
+    return this.http.put(`${this.hostAdress}/updatepass`, user);
   }
 
   deleteUser(emailUser: string): Observable<any>{
@@ -55,5 +58,9 @@ export class PetitionsService {
       email: emailUser
     }
     return  this.http.delete('');
+  }
+
+  testMethod() : Observable<any>  {
+    return this.http.get(`${this.hostAdress}/test`);
   }
 }

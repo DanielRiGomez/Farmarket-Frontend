@@ -24,8 +24,8 @@ export class LoginComponent implements OnInit {
   btnLogin(){
 
     this.petition.validateUser(this.loginForm.value.email, this.loginForm.value.pass).subscribe(data => {
-
       if(data.token){
+        localStorage.setItem("UserEmail", this.loginForm.value.email)
         sessionStorage.setItem("token", data.token);
         this.router.navigateByUrl('/inicio');
       }else {
