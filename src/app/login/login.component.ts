@@ -23,17 +23,14 @@ export class LoginComponent implements OnInit {
 
   btnLogin(){
 
-    this.petition.validateUser(this.loginForm.value.email, this.loginForm.value.pass).subscribe((response: any) => {
-      alert(response.body);
-      /*
+    this.petition.validateUser(this.loginForm.value.email, this.loginForm.value.pass).subscribe(data => {
+
       if(data.token){
         sessionStorage.setItem("token", data.token);
         this.router.navigateByUrl('/inicio');
       }else {
         this.errorMessage="visible";
       }
-
-       */
     });
   }
 
