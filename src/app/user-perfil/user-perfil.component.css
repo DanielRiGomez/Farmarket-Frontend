@@ -1,0 +1,9 @@
+
+button:disabled {
+  background: #000000;
+}
+
+#salir {
+  top: 1%;
+  right: 1%;
+}

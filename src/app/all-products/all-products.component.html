@@ -1,0 +1,27 @@
+
+<h2 class="text-center p-1">Publicaciones</h2>
+
+
+<select class="dropdown btn btn-primary type-products">
+  <option value="tipo1">tipo1</option>
+  <option value="tipo2">tipo2</option>
+  <option value="tipo3">tipo3</option>
+</select>
+
+<div class="container d-flex align-content-center justify-content-center">
+  <div class="col-2  border m-3" *ngFor="let list of publications | paginate: {itemsPerPage:4, currentPage: pages}">
+    <div class="targeta p-2" >
+      <div class="h3 text-center">{{list.titulo}}</div>
+      <div class="h3">{{list.tipo}}</div>
+      <img class="" src="{{list.image}}">
+    </div>
+    <button class="btn btn-dark col-12" value="{{list.id}}" (click)="selectInterest($event)">Me Interesa</button>
+  </div>
+</div>
+<div class="d-flex justify-content-center  mb-2">
+  <pagination-controls class="text-center bg-primary rounded-5" (pageChange)="pages = $event"></pagination-controls>
+</div>
+
+
+
+

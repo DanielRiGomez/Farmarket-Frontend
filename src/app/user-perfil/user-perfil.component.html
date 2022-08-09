@@ -1,0 +1,47 @@
+<div class="d-flex flex-column justify-content-center align-content-center">
+
+  <div class="container bg-dark mw-100 p-2 border border-5 border-secondary">
+    <h1 class="text-white text-center mb-2">Farmarket</h1>
+    <button class="btn btn-primary me-2" type="button" (click)="btnInit()">Menu Inicial</button>
+    <button class="btn btn-danger position-absolute" id="salir" (click)="btnLogOut()">salir</button>
+    <button class="btn btn-primary me-2" (click)="btnProducts()">Mis Publicaciones</button>
+    <label class="text-white float-end" >{{this.emailUser}}</label>
+  </div>
+
+  <div class="container bg-success h-75 w-100 mt-5 rounded border border-2 border-dark p-4">
+    <h2 class="text-black text-center mb-5">Perfil de Usuario</h2>
+
+    <div class="row">
+      <div class="col-12 col-md-6 pe-5 ps-5">
+        <form class="mb-4" [formGroup]="alterNameForm" (ngSubmit)="alterName()">
+          <label >Nuevo Nombre:</label>
+          <input class="form-control mb-3" type="text"  placeholder="Nuevo Usuario" formControlName="newName">
+          <button class="btn btn-warning" [disabled]="alterNameForm.invalid">Cambiar Usuario</button>
+        </form>
+        <form class="mb-4" [formGroup]="alterEmailForm" (ngSubmit)="alterEmail()">
+          <label >Nuevo Email:</label>
+          <input class="form-control mb-3" type="email" placeholder="Nuevo Email" formControlName="newEmail">
+          <button class="btn btn-warning" [disabled]="alterEmailForm.invalid">Cambiar Email</button>
+        </form>
+      </div>
+
+      <div class="col-12 col-md-6  pe-5 ps-5">
+        <form [formGroup]="alterPassForm" (ngSubmit)="alterPass()">
+          <label >Contraseña Antigua:</label>
+          <input class="form-control mb-3" type="password" placeholder="Antigua Contraseña" formControlName="oldPass">
+          <label >Contraseña Nueva:</label>
+          <input class="form-control mb-3" type="password" placeholder="Nueva Contraseña" formControlName="newPass">
+          <label >Repetir Contraseña:</label>
+          <input class="form-control mb-3" type="password" placeholder="Nueva Contraseña" formControlName="newPass2">
+          <button class="btn btn-warning" [disabled]="alterPassForm.invalid">Cambiar Contraseña</button>
+        </form>
+      </div>
+    </div>
+
+   <div class="row mt-5">
+     <button class="btn btn-danger col-8 col-lg-2 col-md-4 col-sm-6  m-auto" (click)="deleteUser()">Eliminar Usuario</button>
+   </div>
+
+  </div>
+
+</div>
