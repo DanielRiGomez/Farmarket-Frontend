@@ -31,7 +31,7 @@ export class AllProductsComponent implements OnInit {
         }else {
           for (const i of data) {
             let newP = {
-              id: i.idProduct,
+              id: i.id_publication,
               titulo: i.titulo,
               emailOwner: i.emailOwner,
               availabe: i.isAvailabe,

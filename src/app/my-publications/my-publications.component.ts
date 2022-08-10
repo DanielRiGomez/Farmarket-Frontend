@@ -15,7 +15,7 @@ export class MyPublicationsComponent implements OnInit {
 
 
   askPublications(): void{
-    this.petition.getAllProductos().subscribe(data => {
+    this.petition.myPublications().subscribe(data => {
       if (data){
         if(data.message){
           alert(data.message);
@@ -24,7 +24,7 @@ export class MyPublicationsComponent implements OnInit {
           for (const i of data) {
             if(data.emailOwner == localStorage.getItem("emailUser")){
               let newP = {
-                id: i.idProduct,
+                id: i.id_publication,
                 titulo: i.titulo,
                 availabe: i.isAvailabe,
                 tipo: i.productType,

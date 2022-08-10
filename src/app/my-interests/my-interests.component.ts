@@ -19,11 +19,11 @@ export class MyInterestsComponent implements OnInit {
       if (data){
         if(data.message){
           alert(data.message);
-          this.invalidToken(data.message());
+          this.invalidToken(data.message);
         }else {
           for (const i of data) {
             let newP = {
-              id: i.idProduct,
+              id: i.idPublication,
               titulo: i.titulo,
               availabe: i.isAvailabe,
               tipo: i.productType,

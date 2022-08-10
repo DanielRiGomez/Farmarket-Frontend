@@ -70,11 +70,15 @@ export class PetitionsService {
     return this.http.get(`${this.hostAdress}/all-publications`);
   }
 
+  myPublications() : Observable<any>{
+    return this.http.get(`${this.hostAdress}/user-publication`)
+  }
+
   myInterests(email: String): Observable<any>{
     let user = {
       emailUser: email
     }
-    return  this.http.post(`${this.hostAdress}/user-interests `, user);
+    return  this.http.get(`${this.hostAdress}/user-interests`);
   }
 
   newPublication(titulo : String, emailOwner : String, isAvailabe : Boolean,
