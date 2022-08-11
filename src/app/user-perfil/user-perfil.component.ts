@@ -17,10 +17,6 @@ export class UserPerfilComponent implements OnInit {
     newName: new FormControl('', Validators.required)
   })
 
-  alterEmailForm = new FormGroup({
-    newEmail: new FormControl('', [Validators.required, Validators.email]),
-  })
-
   alterPassForm = new FormGroup({
     oldPass: new FormControl('', Validators.required),
     newPass: new FormControl('', Validators.required),
@@ -28,18 +24,9 @@ export class UserPerfilComponent implements OnInit {
   })
 
   alterName(){
-    let email = ""+ localStorage.getItem('idUser');
+    let email = ""+ localStorage.getItem('UserEmail');
     this.petition.alterUser(email, this.alterNameForm.value.newName).subscribe((data) => {
-      if (data.message){
-        alert(data.message);
-        this.invalidToken(data.message);
-      }
-    });
-  }
-
-  alterEmail(){
-    let email = ""+ localStorage.getItem('idUser');
-    this.petition.alterEmail(email, this.alterEmailForm.value.newEmail).subscribe((data) => {
+      localStorage.setItem("UserEmail", this.alterNameForm.value.newName);
       if (data.message){
         alert(data.message);
         this.invalidToken(data.message);
@@ -69,9 +56,9 @@ export class UserPerfilComponent implements OnInit {
       if (data.message){
         alert(data.message);
         this.invalidToken(data.message);
-        if(data.accept)
-          this.btnLogOut()
       }
+      if(data.message == "User deleted succesfully")
+        this.btnLogOut()
     })
   }
 
