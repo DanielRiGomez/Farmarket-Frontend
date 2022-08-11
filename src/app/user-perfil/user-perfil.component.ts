@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {PetitionsService} from "../petitions.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-user-perfil',
@@ -9,6 +10,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./user-perfil.component.css']
 })
 export class UserPerfilComponent implements OnInit {
+
+  emailUser = localStorage.getItem("UserEmail");
 
   alterNameForm = new FormGroup({
     newName: new FormControl('', Validators.required)
@@ -25,26 +28,81 @@ export class UserPerfilComponent implements OnInit {
   })
 
   alterName(){
-    let email = ""+ localStorage.getItem('UserEmail');
-    this.petition.alterUser(email, this.alterNameForm.value.newName).subscribe((data) => console.log(data));
+    let email = ""+ localStorage.getItem('idUser');
+    this.petition.alterUser(email, this.alterNameForm.value.newName).subscribe((data) => {
+      if (data.message){
+        alert(data.message);
+        this.invalidToken(data.message);
+      }
+    });
   }
 
   alterEmail(){
-    let email = ""+ localStorage.getItem('UserEmail');
-    this.petition.alterEmail(email, this.alterEmailForm.value.newEmail);
+    let email = ""+ localStorage.getItem('idUser');
+    this.petition.alterEmail(email, this.alterEmailForm.value.newEmail).subscribe((data) => {
+      if (data.message){
+        alert(data.message);
+        this.invalidToken(data.message);
+      }
+    });
   }
 
   alterPass(){
-    let email = ""+ localStorage.getItem('UserEmail');
-    this.petition.alterPass(email, this.alterPassForm.value.newPass,
-      this.alterPassForm.value.oldPass).subscribe((data) => console.log(data));
+    let email = ""+ localStorage.getItem('idUser');
+    if(this.alterPassForm.value.newPass != this.alterPassForm.value.oldPass){
+      alert("Las contraseñas no coinciden");
+    }else {
+      this.petition.alterPass(email, this.alterPassForm.value.newPass,
+        this.alterPassForm.value.oldPass).subscribe((data) => {
+        if (data.message){
+          alert(data.message);
+          this.invalidToken(data.message);
+        }
+      });
+    }
+  }
+
+  deleteUser(){
+    this.modal.dismissAll();
+    let email = ""+ localStorage.getItem('idUser');
+    this.petition.deleteUser(email).subscribe( data => {
+      if (data.message){
+        alert(data.message);
+        this.invalidToken(data.message);
+        if(data.accept)
+          this.btnLogOut()
+      }
+    })
+  }
+
+  invalidToken(message: string){
+    if(message == "Invalid Token"){
+      this.btnLogOut();
+    }
+  }
+
+  btnLogOut(){
+    localStorage.removeItem("token");
+    localStorage.removeItem("UserEmail");
+    localStorage.removeItem("idUser");
+    localStorage.removeItem("typeUser");
+    this.router.navigateByUrl('/');
   }
 
   btnInit(){
-    this.router.navigateByUrl('/inicio')
+    this.router.navigateByUrl('/inicio');
   }
 
-  constructor(private router: Router, private petition:PetitionsService) { }
+  btnProducts() {
+    this.router.navigateByUrl('/publicaciones');
+  }
+
+  openModal(conten: any){
+    this.modal.open(conten);
+  }
+
+  constructor(private router: Router, private petition:PetitionsService,
+              private modal:NgbModal) { }
 
   ngOnInit(): void {
   }

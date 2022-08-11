@@ -1,13 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
-body {
-  background: #F7F7F7;
-}
 
 input.ng-dirty.ng-invalid,
 input.ng-touched.ng-invalid{
   outline: 2px solid red;
 }
 
-button:disabled {
-  background: #000000;
+.targeta:hover {
+  background: darkcyan;
+}
+
+.oculto {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
 }

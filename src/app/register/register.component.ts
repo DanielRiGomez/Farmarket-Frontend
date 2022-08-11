@@ -22,13 +22,12 @@ export class RegisterComponent implements OnInit {
 
   registerUser(){
     this.petitions.createUser(this.registerForm.value.email, this.registerForm.value.pass,
-      this.registerForm.value.name).subscribe((data) => 
-        alert(data.message)
-      );
-  }
-
-  getTest(){
-    this.petitions.getUser().subscribe(data => console.log(data));
+      this.registerForm.value.name).subscribe((data) => {
+        alert(data.message);
+        if(data.message == "Registro Exitoso"){
+          this.router.navigateByUrl('/');
+        }
+      });
   }
 
   constructor( private router: Router, private petitions: PetitionsService) { }

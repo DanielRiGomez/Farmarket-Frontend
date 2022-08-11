@@ -14,7 +14,7 @@ export class LogOutGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    const token = sessionStorage.getItem('token');
+    const token = localStorage.getItem('token');
     if(!token){
       this.router.navigateByUrl('')
     }

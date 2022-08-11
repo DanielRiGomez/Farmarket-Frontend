@@ -1,0 +1,33 @@
+
+<h2 class="text-center p-1">Mis Intereses</h2>
+
+
+<select class="dropdown btn btn-primary type-products" (change)="filterType($event)">
+  <option value="all">Todos</option>
+  <option value="tipo1">tipo1</option>
+  <option value="tipo2">tipo2</option>
+  <option value="tipo3">tipo3</option>
+</select>
+
+<div class="container d-flex align-content-center justify-content-center">
+  <div class="row col-2 border m-2 p-1 rounded" *ngFor="let list of interests | paginate: {itemsPerPage:5, currentPage: pagesInters}">
+    <div class="p-2">
+      <div class="fw-bold h6 text-center">{{list.titulo}}</div>
+      <img class="border rounded border-dark" src="{{list.image}}">
+      <div class="mt-1 h6 bg-warning w-50 p-1 border border-dark rounded-5 text-center">{{list.tipo}}</div>
+    </div>
+    <button class="btn btn-danger col-12 " (click)="openModal(conten)">Eliminar</button>
+    <ng-template #conten let-modal >
+      <div class="modal-header">
+        <div class="h3">¿Desea eliminar de sus intenerese el producto {{list.titulo}}?</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" value="{{list.id}}" (click)="deleteInterest($event)">Eliminar</button>
+        <button type="button" class="btn btn-warning" (click)="modal.dismiss()">Cancelar</button>
+      </div>
+    </ng-template>
+  </div>
+</div>
+<div class="d-flex justify-content-center  mb-2">
+  <pagination-controls class="text-center bg-primary rounded-5" (pageChange)="pagesInters = $event"></pagination-controls>
+</div>

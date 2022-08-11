@@ -5,22 +5,23 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class LogInGuard implements CanActivate {
+export class LogOutAdminGuard implements CanActivate {
 
-  constructor(private router: Router) {
-  }
+  constructor(private router: Router) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     const token = localStorage.getItem('token');
-    if(token){
+    if(!token ){
+      this.router.navigateByUrl('')
+    }else {
       const type = localStorage.getItem('typeUser');
-      if (type == "user"){
-        this.router.navigateByUrl('/inicio')
-      }else {
-        this.router.navigateByUrl('/admin')
+      if(!type){
+        if(type == "U"){
+          this.router.navigateByUrl('')
+        }
       }
 
     }

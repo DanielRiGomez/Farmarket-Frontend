@@ -10,6 +10,13 @@ import {PetitionsService} from "./petitions.service";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {JwtInterceptorInterceptor} from "./jwt-interceptor.interceptor";
+import { AllProductsComponent } from './all-products/all-products.component';
+import { MyInterestsComponent } from './my-interests/my-interests.component';
+import { UseProductsComponent } from './use-products/use-products.component';
+import {NgxPaginationModule} from "ngx-pagination";
+import { MyPublicationsComponent } from './my-publications/my-publications.component';
+import { PanelAdminComponent } from './panel-admin/panel-admin.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -17,14 +24,21 @@ import {JwtInterceptorInterceptor} from "./jwt-interceptor.interceptor";
     LoginComponent,
     RegisterComponent,
     MainMenuComponent,
-    UserPerfilComponent
+    UserPerfilComponent,
+    AllProductsComponent,
+    MyInterestsComponent,
+    UseProductsComponent,
+    MyPublicationsComponent,
+    PanelAdminComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule,
+    NgbModule
   ],
   providers: [PetitionsService, {
     provide: HTTP_INTERCEPTORS,

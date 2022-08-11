@@ -25,11 +25,14 @@ export class LoginComponent implements OnInit {
 
     this.petition.validateUser(this.loginForm.value.email, this.loginForm.value.pass).subscribe(data => {
       if(data.token){
-        localStorage.setItem("UserEmail", this.loginForm.value.email)
-        sessionStorage.setItem("token", data.token);
+        localStorage.setItem("idUser", data.user_id);
+        localStorage.setItem("UserEmail", this.loginForm.value.email);
+        localStorage.setItem("typeUser", data.user_type);
+        localStorage.setItem("token", data.token);
         this.router.navigateByUrl('/inicio');
-      }else {
+      }else if(data.message){
         this.errorMessage="visible";
+        alert(data.message);
       }
     });
   }

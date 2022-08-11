@@ -1,0 +1,45 @@
+
+<h2 class="text-center p-1">Publicaciones</h2>
+
+
+<select class="dropdown btn btn-primary type-products" (change)="filterType($event)">
+  <option value="all">todos</option>
+  <option value="tipo1">tipo1</option>
+  <option value="tipo2">tipo2</option>
+  <option value="tipo3">tipo3</option>
+</select>
+
+<div class="container d-flex align-content-center justify-content-center">
+  <div class="row col-2  border m-2 p1 rounded" *ngFor="let list of publications | paginate: {itemsPerPage:5, currentPage: pages}">
+    <div class="targeta p-2" (click)="openModal(conten)">
+      <div class="fw-bold h6 text-center">{{list.titulo}}</div>
+      <img class="border border-dark rounded" src="{{list.image}}">
+      <div class="mt-1 h6 bg-warning w-50 p-1 border border-dark rounded-5 text-center">{{list.tipo}}</div>
+    </div>
+    <button class="btn btn-dark col-12 align-self-end" value="{{list.id}}" (click)="selectInterest($event)">Me Interesa</button>
+    <ng-template #conten let-modal >
+      <div class="modal-header">
+        <div class="modal-title">{{list.titulo}}</div>
+        <button
+          type="button"
+          class="close btn btn-danger"
+          aria-label="Close"
+          (click)="modal.dismiss()">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="h3">{{list.tipo}}</div>
+        <img class="" src="{{list.image}}">
+        <div>{{list.description}}</div>
+      </div>
+    </ng-template>
+  </div>
+</div>
+<div class="d-flex justify-content-center  mb-2">
+  <pagination-controls class="text-center bg-primary rounded-5" (pageChange)="pages = $event"></pagination-controls>
+</div>
+
+
+
+

@@ -9,8 +9,22 @@ import { PetitionsService } from '../petitions.service';
 })
 export class MainMenuComponent implements OnInit {
 
+  emailUser = localStorage.getItem("UserEmail");
+
   btnPerfil(){
-    this.router.navigateByUrl('/perfil')
+    this.router.navigateByUrl('/perfil');
+  }
+
+  btnLogOut(){
+    localStorage.removeItem("token");
+    localStorage.removeItem("UserEmail");
+    localStorage.removeItem("idUser");
+    localStorage.removeItem("typeUser");
+    this.router.navigateByUrl('/');
+  }
+
+  btnUserProducts(){
+    this.router.navigateByUrl('/publicaciones')
   }
 
   constructor(private router: Router) { }

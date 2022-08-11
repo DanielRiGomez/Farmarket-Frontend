@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -11,8 +11,8 @@ export class PetitionsService {
 
   hostAdress = 'http://localhost:3000'
 
-  getUser(): Observable<any>{
-    return this.http.get('https://jsonplaceholder.typicode.com/todos/1');
+  getAllUsers(): Observable<any>{
+    return this.http.get(`${this.hostAdress}/all-users`);
   }
 
   validateUser(emailUser: string, passUser: string): Observable<any>{
@@ -39,8 +39,12 @@ export class PetitionsService {
     }
     return this.http.post(`${this.hostAdress}/updateuser`, user);
   }
-  alterEmail(emailUser:string, valueNew:string){
-
+  alterEmail(emailUser:string, valueNew:string): Observable<any> {
+    let user = {
+      oldEmail: emailUser,
+      newEmail: valueNew
+    }
+    return this.http.post(`${this.hostAdress}/updateemail`, user);
   }
 
   alterPass(emailUser: string, passNew: string, passOld: string): Observable<any>{
@@ -54,13 +58,65 @@ export class PetitionsService {
   }
 
   deleteUser(emailUser: string): Observable<any>{
-    let userDelete = {
+    let user = {
       email: emailUser
     }
-    return  this.http.delete('');
+    return  this.http.post(`${this.hostAdress}/delete`, user);
   }
 
-  testMethod() : Observable<any>  {
-    return this.http.get(`${this.hostAdress}/test`);
+  getAllProductos(): Observable<any>{
+    return this.http.get(`${this.hostAdress}/all-publications`);
+  }
+
+  myPublications() : Observable<any>{
+    return this.http.get(`${this.hostAdress}/user-publication`)
+  }
+
+  myInterests(email: String): Observable<any>{
+    return  this.http.get(`${this.hostAdress}/user-interests`);
+  }
+
+  newPublication(titulo : String, emailOwner : String, isAvailabe : Boolean,
+                 productType : String, description : String, imageAddress: String): Observable<any> {
+    let user = {
+      titulo : titulo,
+      emailOwner : emailOwner,
+      isAvailabe : isAvailabe,
+      productType : productType,
+      description : description,
+      imageAddress: imageAddress
+    }
+    return  this.http.post(`${this.hostAdress}/add-publication`, user);
+  }
+
+  newInterest(email : String, idProduct : String): Observable<any>{
+    let user = {
+      emailOwner : email,
+      idProduct : idProduct
+    }
+    return  this.http.post(`${this.hostAdress}/add-interest`, user);
+  }
+
+  deletePublication(emailOwner : String, idProduct : String): Observable<any> {
+    let user = {
+      emailOwner : emailOwner,
+      idProduct : idProduct
+    }
+    return  this.http.post(`${this.hostAdress}/delete-publication`, user);
+  }
+
+  deleteIntesrest(emailOwner : String, idProduct : String): Observable<any> {
+    let user = {
+      emailOwner : emailOwner,
+      idProduct : idProduct
+    }
+    return  this.http.post(`${this.hostAdress}/delete-interest`, user);
+  }
+
+  publicationInterests(idPublication: string): Observable<any> {
+    let user = {
+      id_publication : idPublication
+    }
+    return  this.http.post(`${this.hostAdress}/publication-interests`, user);
   }
 }

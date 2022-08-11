@@ -1,26 +1,20 @@
-<body>
+<div class="d-flex flex-column justify-content-center align-content-center">
+  <div class="container bg-dark mw-100 p-2 border border-5 border-secondary">
+    <h1 class="text-white text-center mb-2">Farmarket</h1>
+    <button class="btn btn-danger position-absolute" id="salir" (click)="btnLogOut()">salir</button>
+    <button class="btn btn-primary" (click)="btnUserProducts()">Mis Publicaciones</button>
+    <button class="btn btn-primary rounded-circle float-end" type="button" (click)="btnPerfil()">
+      <img width="30" src="./assets/images/usuario.png">
+    </button>
+    <label class="text-white float-end">{{this.emailUser}}</label>
+  </div>
 
-<section id="top_panel">
-  <h1>Farmarket</h1>
-  <button id="mis_productos">Mis Productos</button>
-  <button type="button" class="inf_user" id="perfirl" (click)="btnPerfil()">Perfil</button>
-  <label class="inf_user" for="username">Nombre de Usuario...</label>
-</section>
+  <div class="container bg-success w-100 mt-5 rounded border border-2 border-dark">
+    <app-my-interests></app-my-interests>
+  </div>
 
-<section class="center_panel" id="intereses_panel" >
-  <h2>Mis Intereses</h2>
-</section>
+  <div class="container bg-success w-100 mt-5 rounded border border-2 border-dark">
+    <app-all-products></app-all-products>
+  </div>
+</div>
 
-<section class="center_panel" id="busqueda_panel">
-
-  <h2>Publicaciones</h2>
-
-  <select name="tipo_product" id="tipo_product">
-    <option value="tipo1">tipo1</option>
-    <option value="tipo2">tipo2</option>
-    <option value="tipo3">tipo3</option>
-  </select>
-
-</section>
-
-</body>
