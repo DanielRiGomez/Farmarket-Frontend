@@ -9,7 +9,7 @@ export class PetitionsService {
 
   constructor(private http: HttpClient) {}
 
-  hostAdress = 'https://farmarket-backend.herokuapp.com/'
+  hostAdress = 'https://farmarket-backend.herokuapp.com'
 
   getAllUsers(): Observable<any>{
     return this.http.get(`${this.hostAdress}/all-users`);
