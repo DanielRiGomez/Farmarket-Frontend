@@ -20,6 +20,7 @@ export class PanelAdminComponent implements OnInit {
   askUsers(): void{
     this.petition.getAllUsers().subscribe(data => {
       if (data){
+        console.log(data)
         if(data.message){
           alert(data.message);
           this.invalidToken(data.message);
@@ -27,9 +28,9 @@ export class PanelAdminComponent implements OnInit {
           this.allUsers = [];
           for (const i of data) {
             let newP = {
-              id: i.idUser,
+              id: i.user_id,
               email: i.email,
-              name: i.nameUser,
+              name: i.name
             }
             this.allUsers.push(newP);
           }
@@ -38,12 +39,45 @@ export class PanelAdminComponent implements OnInit {
     })
   }
 
+  askPublications(): void{
+    this.petition.getAllProductos().subscribe(data => {
+      if (data){
+        if(data.message){
+          alert(data.message);
+          this.invalidToken(data.message());
+        }else {
+          for (const i of data) {
+            let imageAd = "";
+            if(i.imageAddress == null){
+              imageAd = "./assets/images/iconoPublication.png";
+            }else {
+              imageAd = i.imageAddress;
+            }
+            let newP = {
+              id: i.id_publication,
+              titulo: i.titulo,
+              emailOwner: i.emailOwner,
+              availabe: i.isAvailabe,
+              tipo: i.productType,
+              description: i.description,
+              image: imageAd
+            }
+            this.allPublications.push(newP);
+            this.publications.push(newP);
+          }
+        }
+      }
+    })
+  }
+
   deleteUser (e: any){
-    this.petition.deleteUser(e.value).subscribe(data => {
+    console.log(e.target.value);
+    this.petition.deleteUserAdmin(e.target.value).subscribe(data => {
       if (data){
         if(data.message) {
           alert(data.message);
           this.invalidToken(data.message);
+          window.location.reload();
         }
       }
     })
@@ -55,7 +89,7 @@ export class PanelAdminComponent implements OnInit {
 
   deletePublication(e: any) {
     this.modal.dismissAll();
-    this.petition.deletePublication(""+localStorage.getItem("idUser"), e.target.value)
+    this.petition.deletePublicationAdmin(e.target.value)
       .subscribe(data => {
         if (data){
           alert(data.message);
@@ -103,6 +137,8 @@ export class PanelAdminComponent implements OnInit {
               private modal: NgbModal) { }
 
   ngOnInit(): void {
+    this.askUsers();
+    this.askPublications();
   }
 
 }

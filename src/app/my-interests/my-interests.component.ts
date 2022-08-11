@@ -46,6 +46,7 @@ export class MyInterestsComponent implements OnInit {
   }
 
   deleteInterest(e: any) {
+    this.model.dismissAll();
     this.petition.deleteIntesrest(""+localStorage.getItem("idUser"), e.target.value)
       .subscribe(data => {
         if (data){

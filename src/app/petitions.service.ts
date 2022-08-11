@@ -105,6 +105,13 @@ export class PetitionsService {
     return  this.http.post(`${this.hostAdress}/delete-publication`, user);
   }
 
+  deletePublicationAdmin( idProduct : String): Observable<any> {
+    let user = {
+      idProduct : idProduct
+    }
+    return  this.http.post(`${this.hostAdress}/delete-publication-admin`, user);
+  }
+
   deleteIntesrest(emailOwner : String, idProduct : String): Observable<any> {
     let user = {
       emailOwner : emailOwner,
@@ -115,8 +122,16 @@ export class PetitionsService {
 
   publicationInterests(idPublication: string): Observable<any> {
     let user = {
-      id_publication : idPublication
+      id_publication : idPublication,
+      prueba : "aaaaaa"
     }
     return  this.http.post(`${this.hostAdress}/publication-interests`, user);
+  }
+
+  deleteUserAdmin(idUser: string): Observable<any>{
+    let user = {
+      user_id: idUser
+    }
+    return  this.http.post(`${this.hostAdress}/delete_user_admin`, user);
   }
 }

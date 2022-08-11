@@ -29,7 +29,13 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("UserEmail", this.loginForm.value.email);
         localStorage.setItem("typeUser", data.user_type);
         localStorage.setItem("token", data.token);
-        this.router.navigateByUrl('/inicio');
+        if(data.user_type == "U"){
+          this.router.navigateByUrl('/inicio');
+        }else {
+          alert("Bienvenido Admin")
+          this.router.navigateByUrl('/admin');
+        }
+
       }else if(data.message){
         this.errorMessage="visible";
         alert(data.message);

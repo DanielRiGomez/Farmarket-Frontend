@@ -10,11 +10,12 @@
 
 <div class="container d-flex align-content-center justify-content-center">
   <div class="row col-2 border m-2 p-1 rounded" *ngFor="let list of myPublications | paginate: {itemsPerPage:5, currentPage: pagePublis}">
-    <div class="targeta p-1" (click)="openModalUsersInterested(content, $event)">
+    <div class="p-1" >
       <div class="fw-bold h6 text-center">{{list.titulo}}</div>
       <img class="border border-dark rounded" src="{{list.image}}">
       <div class="mt-1 h6 bg-warning w-50 p-1 border border-dark rounded-5 text-center">{{list.tipo}}</div>
     </div>
+    <button class="btn btn-primary align-self-end" value="{{list.id}}" (click)="openModalUsersInterested(content, $event)">Interezados</button>
     <button class="btn btn-danger align-self-end" value="{{list.id}}" (click)="openModal(conten)">Eliminar</button>
     <ng-template #conten let-modal>
       <div class="modal-header">

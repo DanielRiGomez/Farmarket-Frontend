@@ -102,6 +102,7 @@ export class MyPublicationsComponent implements OnInit {
   }
 
   askPublicatiocInterests(e: any){
+    this.publicationInterests = [];
     this.petition.publicationInterests(e.target.value).subscribe(data =>{
       if (data){
         if(data.message){
@@ -110,8 +111,8 @@ export class MyPublicationsComponent implements OnInit {
         }else {
           for (const i of data) {
             let newP = {
-              name: i.user_name,
-              email: i.user_email
+              name: i.name,
+              email: i.email
             }
             this.publicationInterests.push(newP)
           }

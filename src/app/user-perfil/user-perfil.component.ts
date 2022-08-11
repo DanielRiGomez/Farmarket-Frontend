@@ -48,8 +48,8 @@ export class UserPerfilComponent implements OnInit {
   }
 
   alterPass(){
-    let email = ""+ localStorage.getItem('idUser');
-    if(this.alterPassForm.value.newPass != this.alterPassForm.value.oldPass){
+    let email = ""+ localStorage.getItem('UserEmail');
+    if(this.alterPassForm.value.newPass2 != this.alterPassForm.value.newPass){
       alert("Las contraseñas no coinciden");
     }else {
       this.petition.alterPass(email, this.alterPassForm.value.newPass,
