@@ -7,9 +7,9 @@ import {Observable} from "rxjs";
 })
 export class PetitionsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  hostAdress = 'http://localhost:3000'
+  hostAdress = 'https://farmarket-backend.herokuapp.com/'
 
   getAllUsers(): Observable<any>{
     return this.http.get(`${this.hostAdress}/all-users`);
